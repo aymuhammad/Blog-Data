@@ -135,4 +135,4 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 # EMAIL_USE_TLS = True
 
 # locally sending emails to terminals
-EMAIL_BACKEND = 'django.core.mail.backends.console.EMAILBackend'
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
