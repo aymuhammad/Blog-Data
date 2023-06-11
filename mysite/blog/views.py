@@ -26,9 +26,13 @@ def post_list(request):
     return render(request, 'blog/post/list.html', {'posts': posts})
 
 
-def post_detail(request, id):
-    post = get_object_or_404(Post, id=id, status=Post.Status.PUBLISHED, slug=post, publish__year=year, publish__month=month, publish__day=name)
-    return render(request, 'blog/post/detail.html', {'post': post})
+def post_detail(request, year, month, day, post):
+    post = get_object_or_404(Post, id=id, status=Post.Status.PUBLISHED, slug=post, publish__year=year, publish__month=month, publish__day=day)
+    # active comment for the post
+    comments = post.comments.filter(active=True)
+    # users comment form
+    form = CommentForm()
+    return render(request, 'blog/post/detail.html', {'post': post, 'comments': comments, 'form': form })
 
 
 # class based-view 
